@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ocean Animation */
+.wave-animation {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.1) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.1) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 100px 100px;
+  animation: wave 10s linear infinite;
+  transform-origin: center bottom;
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(0) translateZ(0) scaleY(1);
+  }
+  50% {
+    transform: translateX(-25%) translateZ(0) scaleY(0.95);
+  }
+  100% {
+    transform: translateX(-50%) translateZ(0) scaleY(1);
+  }
+}
+
+/* Ship Animation */
+.ship-container {
+  position: absolute;
+  bottom: 20%;
+  left: -150px;
+  animation: sailAcross 30s linear infinite;
+}
+
+.ship {
+  width: 300px;
+  height: 100px;
+  position: relative;
+  animation: rockShip 5s ease-in-out infinite;
+}
+
+.ship-body {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background: #2c5282;
+  border-radius: 10px 40px 0 0;
+}
+
+.ship-chimney {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  background: #4a5568;
+  transform: translateX(-50%);
+}
+
+@keyframes sailAcross {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(calc(100vw + 300px));
+  }
+}
+
+@keyframes rockShip {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+/* Logo Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Map Styling */
+.map-material {
+  filter: saturate(0.8) contrast(1.1);
+}
+
+.custom-popup .leaflet-popup-content-wrapper {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.custom-popup .leaflet-popup-tip {
+  background: white;
+}
+
+/* Fix Leaflet marker icon paths */
+.leaflet-default-icon-path {
+  background-image: url(https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png);
+}
+
+.leaflet-default-shadow-path {
+  background-image: url(https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png);
+}
